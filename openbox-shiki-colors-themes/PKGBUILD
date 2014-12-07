@@ -1,3 +1,4 @@
+# Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=openbox-shiki-colors-themes
@@ -9,7 +10,7 @@ url="http://www.box-look.org/content/show.php/Shiki-Colors+for+Openbox?content=1
 license=('Creative Commons by-nc-sa')
 depends=('openbox')
 source=("http://fc00.deviantart.net/fs71/f/2010/011/1/5/Shiki_Colors_for_Openbox_by_jmcknight.gz")
-md5sums=('9bfdc470810ef2b72e107d7edae86661')
+sha256sums=('cac41a7c807743a52e90ea3c7e1c4892992e8fe6b499672bd29e2f755ef77cf3')
 
 build() { 
   true
