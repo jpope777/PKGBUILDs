@@ -1,0 +1,27 @@
+ 
+# Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
+pkgname=breeze-blue-cursor-theme
+pkgver=1.0
+pkgrel=1
+pkgdesc="Breeze Blue cursor theme."
+arch=('any')
+url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
+license=('GPL')
+source=("https://share.kde.org/public.php?service=files&t=4ed6d01b78f99b201673881c38282269&download")
+makedepends=('unzip' 'xorg-xcursorgen')
+
+sha256sums=('0f4e2630baf056f2af7df09b2fa0ab040bbf0b70cb80afc8da8e20e680a0c0fd')
+
+build() {
+    cd $srcdir/Breeze_Blue
+    sh build.sh
+}
+package() {
+    cd $srcdir/Breeze_Blue/Breeze_Blue
+    install -d $pkgdir/usr/share/icons/Breeze_Blue
+    cp -rf *   $pkgdir/usr/share/icons/Breeze_Blue
+    chmod -R 644 $pkgdir/usr/share/icons/Breeze_Blue/*
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Blue
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Blue/cursors
+}
+

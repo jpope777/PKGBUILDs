@@ -1,0 +1,26 @@
+ 
+# Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
+pkgname=breeze-contrast-cursor-theme
+pkgver=1.0
+pkgrel=1
+pkgdesc="Breeze Contrast cursor theme."
+arch=('any')
+url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
+license=('GPL')
+source=("https://share.kde.org/public.php?service=files&t=f29b687cbc452f9c9490b8ad7e7875ef&download")
+makedepends=('unzip' 'xorg-xcursorgen')
+
+sha256sums=('17fee1de78519397a4cd68aa3e09692d8a6d545c433e65ab1371d8c392208806')
+
+build() {
+    cd $srcdir/Breeze_Contrast
+    sh build.sh
+}
+package() {
+    cd $srcdir/Breeze_Contrast/Breeze_Contrast
+    install -d $pkgdir/usr/share/icons/Breeze_Contrast
+    cp -rf *   $pkgdir/usr/share/icons/Breeze_Contrast
+    chmod -R 644 $pkgdir/usr/share/icons/Breeze_Contrast/*
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Contrast
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Contrast/cursors
+}

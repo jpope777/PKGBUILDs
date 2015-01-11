@@ -1,0 +1,26 @@
+ 
+# Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
+pkgname=breeze-amber-cursor-theme
+pkgver=1.0
+pkgrel=1
+pkgdesc="Breeze Amber cursor theme."
+arch=('any')
+url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
+license=('GPL')
+source=("https://share.kde.org/public.php?service=files&t=2c559f2a52cabec25c0120dc4865d4dd&download")
+makedepends=('unzip' 'xorg-xcursorgen')
+
+sha256sums=('d2d5ddd71d40fbffc172a74494c1c8ba4a6edbe71ff9915ecfbbf6b1c4a753d6')
+
+build() {
+    cd $srcdir/Breeze_Amber
+    sh build.sh
+}
+package() {
+    cd $srcdir/Breeze_Amber/Breeze_Amber
+    install -d $pkgdir/usr/share/icons/Breeze_Amber
+    cp -rf *   $pkgdir/usr/share/icons/Breeze_Amber
+    chmod -R 644 $pkgdir/usr/share/icons/Breeze_Amber/*
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Amber
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Amber/cursors
+}

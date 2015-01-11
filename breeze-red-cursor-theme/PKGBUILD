@@ -1,0 +1,26 @@
+ 
+# Maintainer: Jeremy Pope <jpope at jpope dot org> PGP-Key: E00B4261
+pkgname=breeze-red-cursor-theme
+pkgver=1.0
+pkgrel=1
+pkgdesc="Breeze Red cursor theme."
+arch=('any')
+url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
+license=('GPL')
+source=("https://share.kde.org/public.php?service=files&t=a18886fd8e4dec7f7a1dcab42dede656&download")
+makedepends=('unzip' 'xorg-xcursorgen')
+
+sha256sums=('70f3bd89072753694276434457013aa741c0fdfba403839aa7108e2539d8ccb9')
+
+build() {
+    cd $srcdir/Breeze_Red
+    sh build.sh
+}
+package() {
+    cd $srcdir/Breeze_Red/Breeze_Red
+    install -d $pkgdir/usr/share/icons/Breeze_Red
+    cp -rf *   $pkgdir/usr/share/icons/Breeze_Red
+    chmod -R 644 $pkgdir/usr/share/icons/Breeze_Red/*
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Red
+    chmod 755 $pkgdir/usr/share/icons/Breeze_Red/cursors
+}
